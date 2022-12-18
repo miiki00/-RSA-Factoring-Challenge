@@ -1,28 +1,29 @@
 #!/usr/bin/python3
-from sys import argv
 from linecache import getline
+from sys import argv
 
 
-def first_prime_factor(n: int) -> int:
+def first_factor(n: int) -> int:
     if n <= 3:
-        return (2)
+        return (1)
     if n % 2 == 0:
         return (2)
     if n % 3 == 0:
         return (3)
-    limit = int(n**0.5)
-    for i in range(5, limit + 1, 6):
-        if n % i == 0 or n % (i + 2) == 0:
+    limit = int(n ** 0.5)
+    for i in range(5, limit + 1, 2):
+        if n % i == 0:
             return (i)
     return (1)
+
 
 if __name__ == "__main__":
     line = 1
     while True:
-        line_str = getline(argv[1], line)
-        if (len(line_str) == 0):
+        line_s = getline(argv[1], line)
+        if (len(line_s) == 0):
             break
-        num = int(line_str[:-1])
-        factor = first_prime_factor(num)
+        num = int(line_s[:-1])
+        factor = first_factor(num)
         print("{}={}*{}".format(num, num // factor, factor))
         line += 1
