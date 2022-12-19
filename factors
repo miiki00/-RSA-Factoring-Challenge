@@ -19,8 +19,8 @@ def first_factor(n: int) -> int:
             return (i)
         if n % j == 0:
             return (j)
-        i += 2
-        j -= 2
+        i += 1
+        j -= 1
     return (1)
 
 
