@@ -14,7 +14,7 @@ def first_factor(n: int) -> int:
     if limit % 2 == 0:
         limit += 1
     i, j = 5, limit
-    while True:
+    while i <= j:
         if n % i == 0:
             return (i)
         if n % j == 0:
