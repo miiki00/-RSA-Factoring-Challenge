@@ -14,7 +14,7 @@ def first_prime_factor(n: int) -> int:
     if limit % 2 == 0:
         limit = limit + 1
     i, j = 5, limit
-    while i < j:
+    while i <= j:
         if n % i == 0:
             return (i)
         if n % (i + 2) == 0:
