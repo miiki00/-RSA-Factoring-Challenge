@@ -11,10 +11,18 @@ def first_prime_factor(n: int) -> int:
     if n % 3 == 0:
         return (3)
     limit = int(n**0.5)
-    for i in range(5, limit + 1, 6):
+    if limit % 2 == 0:
+        limit = limit + 1
+    i, j = 5, limit
+    while i < limit / 2:
         if n % i == 0 or n % (i + 2) == 0:
             return (i)
+        if n % j == 0 or n % (j - 2) == 0:
+            return (j)
+        i += 6
+        j -= 4
     return (1)
+
 
 if __name__ == "__main__":
     line = 1
