@@ -11,9 +11,16 @@ def first_factor(n: int) -> int:
     if n % 3 == 0:
         return (3)
     limit = int(n ** 0.5)
-    for i in range(5, limit + 1, 2):
+    if limit % 2 == 0:
+        limit += 1
+    i, j = 5, limit
+    while True:
         if n % i == 0:
             return (i)
+        if n % j == 0:
+            return (j)
+        i += 2
+        j -= 2
     return (1)
 
 
