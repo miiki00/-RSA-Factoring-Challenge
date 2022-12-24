@@ -10,7 +10,10 @@ def first_prime_factor(n: int) -> int:
         return (2)
     if n % 3 == 0:
         return (3)
-    limit = int(n**0.5)
+    if n > 20000:
+        limit = n // 5000
+    else:
+        limit = int(n ** 0.5)
     if limit % 2 == 0:
         limit = limit + 1
     i, j = 5, limit
