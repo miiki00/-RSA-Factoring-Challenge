@@ -1,36 +1,43 @@
 #!/usr/bin/python3
-from linecache import getline
 from sys import argv
+from linecache import getline
 
 
-def first_factor(n: int) -> int:
+def first_prime_factor(n: int) -> int:
     if n <= 3:
-        return (1)
+        return (2)
     if n % 2 == 0:
         return (2)
     if n % 3 == 0:
         return (3)
-    limit = int(n ** 0.5)
+    if n > 20000:
+        limit = n // 5000
+    else:
+        limit = int(n ** 0.5)
     if limit % 2 == 0:
-        limit += 1
+        limit = limit + 1
     i, j = 5, limit
     while i <= j:
         if n % i == 0:
             return (i)
+        if n % (i + 2) == 0:
+            return (i + 2)
         if n % j == 0:
             return (j)
-        i += 1
-        j -= 1
+        if n % (j - 2) == 0:
+            return (j - 2)
+        i += 6
+        j -= 4
     return (1)
 
 
 if __name__ == "__main__":
     line = 1
     while True:
-        line_s = getline(argv[1], line)
-        if (len(line_s) == 0):
+        line_str = getline(argv[1], line)
+        if (len(line_str) == 0):
             break
-        num = int(line_s[:-1])
-        factor = first_factor(num)
+        num = int(line_str[:-1])
+        factor = first_prime_factor(num)
         print("{}={}*{}".format(num, num // factor, factor))
         line += 1
